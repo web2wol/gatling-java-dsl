@@ -22,6 +22,7 @@ public class baseHelpers {
 
     public static final Integer scn1Users = Integer.parseInt(System.getProperty("scn1Users", "1"));
     public static final Integer scn2Users = Integer.parseInt(System.getProperty("scn2Users", "1"));
+    public static final Integer scn3Users = Integer.parseInt(System.getProperty("scn3Users", "1"));
     public static final Integer scnRampUp = Integer.parseInt(System.getProperty("scnRampUp", "1"));
 
 
