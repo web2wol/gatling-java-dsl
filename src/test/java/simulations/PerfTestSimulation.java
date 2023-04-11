@@ -1,6 +1,6 @@
 package simulations;
 
-import static config.baseHelpers.httpProtocolWithoutInferHtmlResources;
+import static config.baseHelpers.*;
 import static io.gatling.javaapi.core.CoreDsl.*;
 //import config.baseHelpers;
 import scenarios.BlazeDemo;
@@ -25,7 +25,9 @@ public class PerfTestSimulation extends Simulation {
         try {
 
 
-            this.setUp(BD.scnBlazeDemo().injectOpen(rampUsers(1).during(1)))
+            this.setUp(BD.scnBlazeDemo().injectOpen(rampUsers(scn1Users).during(scnRampUp)))
+                    .protocols(httpProtocolWithoutInferHtmlResources);
+            this.setUp(BD.scnBlazeDemo().injectOpen(rampUsers(scn2Users).during(scnRampUp)))
                     .protocols(httpProtocolWithoutInferHtmlResources);
         } catch (Exception e) {
             e.printStackTrace();
