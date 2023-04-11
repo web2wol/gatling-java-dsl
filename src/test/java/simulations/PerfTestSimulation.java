@@ -20,15 +20,15 @@ public class PerfTestSimulation extends Simulation {
 
 //    config.baseHelpers helpers = new baseHelpers();
     scenarios.BlazeDemo BD = new BlazeDemo();
-
+// mvn gatling:test -Dscn1Users=10 -Dscn2Users=2
     {
         try {
-
-
-            this.setUp(BD.scnBlazeDemo().injectOpen(rampUsers(scn1Users).during(scnRampUp)))
+            setUp(
+                    BD.scnBlazeDemo("1").injectOpen(rampUsers(scn1Users).during(scnRampUp)),
+                    BD.scnBlazeDemo("2").injectOpen(rampUsers(scn2Users).during(scnRampUp))
+            )
                     .protocols(httpProtocolWithoutInferHtmlResources);
-            this.setUp(BD.scnBlazeDemo().injectOpen(rampUsers(scn2Users).during(scnRampUp)))
-                    .protocols(httpProtocolWithoutInferHtmlResources);
+
         } catch (Exception e) {
             e.printStackTrace();
         }

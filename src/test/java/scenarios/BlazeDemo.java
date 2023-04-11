@@ -13,8 +13,8 @@ public class BlazeDemo {
 //    baseHelpers helpers = new baseHelpers();
     test t = new test();
 
-    public ScenarioBuilder scnBlazeDemo() {
-        return scenario("Blaze Demo Site")
+    public ScenarioBuilder scnBlazeDemo(String scnName) {
+        return scenario("Blaze Demo Site " + scnName)
                 .exec(flushHttpCache())
                 .exec(flushCookieJar())
                 /**
