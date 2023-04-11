@@ -8,16 +8,11 @@
   <version>3.9.3</version>
 
   <properties>
-    <!-- use the following if you're compiling with JDK 8-->
-    <maven.compiler.source>17</maven.compiler.source>
-    <maven.compiler.target>17</maven.compiler.target>
-    <!-- comment the 2 lines above and uncomment the line bellow if you're compiling with JDK 11 or 17 -->
-    <!--    <maven.compiler.release>11</maven.compiler.release>-->
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <gatling.version>${project.version}</gatling.version>
     <gatling-maven-plugin.version>4.3.1</gatling-maven-plugin.version>
-    <maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>
     <maven-jar-plugin.version>3.2.2</maven-jar-plugin.version>
+    <default.simulation.class>simulations.PerfTestSimulation</default.simulation.class>
   </properties>
 
   <dependencies>
@@ -31,21 +26,12 @@
 
   <build>
     <plugins>
-<!--      <plugin>-->
-<!--        <artifactId>maven-compiler-plugin</artifactId>-->
-<!--        <version>${maven-compiler-plugin.version}</version>-->
-<!--      </plugin>-->
-<!--      <plugin>-->
-<!--        <artifactId>maven-jar-plugin</artifactId>-->
-<!--        <version>${maven-jar-plugin.version}</version>-->
-<!--      </plugin>-->
       <plugin>
         <groupId>io.gatling</groupId>
         <artifactId>gatling-maven-plugin</artifactId>
         <version>${gatling-maven-plugin.version}</version>
         <configuration>
-          <!-- Enterprise Cloud (https://cloud.gatling.io/) configuration reference: https://gatling.io/docs/gatling/reference/current/extensions/maven_plugin/#working-with-gatling-enterprise-cloud -->
-          <!-- Enterprise Self-Hosted configuration reference: https://gatling.io/docs/gatling/reference/current/extensions/maven_plugin/#working-with-gatling-enterprise-self-hosted -->
+          <simulationClass>${default.simulation.class}</simulationClass>
         </configuration>
       </plugin>
     </plugins>
